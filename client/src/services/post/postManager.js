@@ -10,6 +10,16 @@ class PostManager {
       return { contentStatus: "error" };
     }
   }
+
+  async getPosts() {
+    try {
+      const response = await postClient.getPosts();
+      const data = response.data;
+      return { data: data, contentStatus: "ok" };
+    } catch (e) {
+      return { data: {}, contentStatus: "error" };
+    }
+  }
 }
 
 export const postManager = new PostManager();
