@@ -13,6 +13,12 @@ class PostClient extends Client {
 
     return response;
   }
+
+  async getPosts() {
+    const response = await this.localInstance.get("/posts");
+
+    return response;
+  }
 }
 
 export const postClient = new PostClient();
