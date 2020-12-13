@@ -1,9 +1,9 @@
 import { commentClient } from "../apiClients/commentClient";
 
 class CommentManager {
-  async createPost(title) {
+  async createComment(postId, content) {
     try {
-      await commentClient.createPostByTitle(title);
+      await commentClient.createCommentByContent(postId, content);
 
       return { contentStatus: "ok" };
     } catch (e) {

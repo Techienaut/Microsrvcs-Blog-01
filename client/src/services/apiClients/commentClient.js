@@ -1,4 +1,5 @@
 import { Client } from "./client";
+import { instance } from "../config";
 
 class CommentClient extends Client {
   constructor() {
@@ -7,8 +8,11 @@ class CommentClient extends Client {
     this.localInstance = instance(this.PORT);
   }
 
-  async createPostByTitle(title) {
-    const response = await this.localInstance.post("/posts", { title });
+  async createCommentByContent(postID, content) {
+    const response = await this.localInstance.post(
+      `/posts/${postID}/comments`,
+      { content }
+    );
 
     return response;
   }
