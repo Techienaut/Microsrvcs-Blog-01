@@ -16,6 +16,12 @@ class CommentClient extends Client {
 
     return response;
   }
+
+  async getComments(postId) {
+    const response = await this.localInstance.get(`/posts/${postId}/comments`);
+
+    return response;
+  }
 }
 
 export const commentClient = new CommentClient();
