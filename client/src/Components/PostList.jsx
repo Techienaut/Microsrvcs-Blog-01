@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { postManager } from "../services/post/postManager";
+import { CommentCreate } from "./CommentCreate";
+import { CommentList } from "./CommentList";
 
 export const PostList = () => {
   const [posts, SetPosts] = useState({});
@@ -21,6 +23,8 @@ export const PostList = () => {
       >
         <div className="card-body">
           <h3>{post.title}</h3>
+          <CommentList postId={post.id} />
+          <CommentCreate postID={post.id} />
         </div>
       </div>
     );
