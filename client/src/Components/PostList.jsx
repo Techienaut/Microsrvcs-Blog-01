@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { postManager } from "../services/post/postManager";
+import { queryManager } from "../services/query/queryManager";
 import { CommentCreate } from "./CommentCreate";
 import { CommentList } from "./CommentList";
 
 export const PostList = () => {
   const [posts, SetPosts] = useState({});
   const getPosts = async () => {
-    const response = await postManager.getPosts();
+    const response = await queryManager.getPosts();
     SetPosts(response.data);
   };
 
@@ -23,7 +23,7 @@ export const PostList = () => {
       >
         <div className="card-body">
           <h3>{post.title}</h3>
-          <CommentList postId={post.id} />
+          <CommentList comments={post.comments} />
           <CommentCreate postID={post.id} />
         </div>
       </div>
